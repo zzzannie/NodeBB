@@ -23,15 +23,15 @@ jobs:
 
       - name: Set up NodeBB
         run: |
-          ./nodebb setup '{"url":"localhost:443",
+          ./nodebb setup '{"url":"https://localhost:443",
             "admin:username": "admin",
             "admin:password": "${{ secrets.ADMIN_PASSWORD }}",
             "admin:password:confirm": "${{ secrets.ADMIN_PASSWORD }}",
             "admin:email": "rohanpadhye@cmu.edu",
             "database": "redis",
-            "host": "${{ secrets.REDIS_HOST }}",
-            "port":"6380",
-            "password": "${{ secrets.REDIS_PASSWORD }}" }'
+            "redis:host": "${{ secrets.REDIS_HOST }}",
+            "redis:port": "6379",
+            "redis:password": "${{ secrets.REDIS_PASSWORD }}" }'
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
